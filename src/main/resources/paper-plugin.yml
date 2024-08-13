@@ -1,0 +1,4 @@
+name: RandomTeleport2
+version: '1.0-SNAPSHOT'
+main: net.cherryleaves.randomTeleport2.RandomTeleport2
+api-version: '1.21'
