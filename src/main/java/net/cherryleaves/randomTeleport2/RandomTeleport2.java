@@ -8,11 +8,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public final class RandomTeleport2 extends JavaPlugin implements @NotNull Listener {
+public final class RandomTeleport2 extends JavaPlugin implements Listener {
 
 
     @Override
@@ -37,7 +36,6 @@ public final class RandomTeleport2 extends JavaPlugin implements @NotNull Listen
             int X = random();
             int aY = 0;
             int Z = random();
-            Material highestNonAirBlock = Material.AIR;
             if (e.getPlayer().getWorld().getName().equals("world_nether")) {
                 X = random();
                 Z = random();
@@ -59,7 +57,6 @@ public final class RandomTeleport2 extends JavaPlugin implements @NotNull Listen
                     Material blockType = p.getWorld().getBlockAt(X, y, Z).getType();
                     aY = y;
                     if (blockType != Material.AIR) {
-                        highestNonAirBlock = blockType;
                         break;
                     }
                 }
@@ -74,7 +71,6 @@ public final class RandomTeleport2 extends JavaPlugin implements @NotNull Listen
                     Material blockType = p.getWorld().getBlockAt(X, y, Z).getType();
                     aY = y;
                     if (blockType != Material.AIR) {
-                        highestNonAirBlock = blockType;
                         break;
                     }
                 }
