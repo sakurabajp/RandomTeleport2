@@ -39,7 +39,7 @@ public final class RandomTeleport2 extends JavaPlugin implements Listener {
             if (e.getPlayer().getWorld().getName().equals("world_nether")) {
                 X = random();
                 Z = random();
-                for (int y = highestY; y <= 128; y++) {
+                for (int y = highestY; y < 128; y++) {
                     Material blockType = p.getWorld().getBlockAt(X, y, Z).getType();
                     aY = y;
                     if (blockType == Material.AIR && !p.getWorld().getBlockAt(X, y - 1, Z).getType().equals(Material.LAVA)) {
