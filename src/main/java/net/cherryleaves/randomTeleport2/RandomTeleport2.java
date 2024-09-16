@@ -41,8 +41,8 @@ public final class RandomTeleport2 extends JavaPlugin implements Listener {
                 Z = random();
                 for (int y = highestY; y < 128; y++) {
                     Material blockType = p.getWorld().getBlockAt(X, y, Z).getType();
-                    aY = y;
                     if (blockType == Material.AIR && !p.getWorld().getBlockAt(X, y - 1, Z).getType().equals(Material.LAVA)) {
+                        aY = y;
                         if (p.getWorld().getBlockAt(X, y - 2, Z).getType().equals(Material.LAVA)) {
                             p.getWorld().getBlockAt(X, y - 1, Z).setType(Material.GLASS);
                             p.sendMessage("飛ばされた先が溶岩の上だったのでブロックを敷いたよ！");
@@ -50,8 +50,10 @@ public final class RandomTeleport2 extends JavaPlugin implements Listener {
                         break;
                     }
                 }
+                p.getWorld().getBlockAt(X, aY + 1, Z).setType(Material.AIR);
+                p.getWorld().getBlockAt(X, aY + 2, Z).setType(Material.AIR);
             }
-            if (e.getPlayer().getWorld().getName().equals("world_the_end")) {
+            else if (e.getPlayer().getWorld().getName().equals("world_the_end")) {
                 highestY = e.getPlayer().getWorld().getMaxHeight();
                 for (int y = highestY - 1; y >= 0; y--) {
                     Material blockType = p.getWorld().getBlockAt(X, y, Z).getType();
@@ -65,7 +67,8 @@ public final class RandomTeleport2 extends JavaPlugin implements Listener {
                     p.getWorld().getBlockAt(X, aY - 1, Z).setType(Material.GLASS);
                     p.sendMessage("飛ばされた先に何もなかったのでブロックを敷いたよ！");
                 }
-            } else {
+            }
+            else {
                 highestY = e.getPlayer().getWorld().getMaxHeight();
                 for (int y = highestY - 1; y >= -64; y--) {
                     Material blockType = p.getWorld().getBlockAt(X, y, Z).getType();
